@@ -43,22 +43,23 @@ h1 {
     margin-right: 10px;
     margin-bottom: 10px;
     background-color: #4d513c;
-    color: #a5a697;
-    font-size: 56px;
+    color: transparent;
+    font-size: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    cursor: pointer;
     transition: background-color .2s, color .2s, transform .2s;
 }
 
 .card.open {
-    background-color: #a5a697;
-    color: #42423c;
+    background-color: #707362;
+    color: #a5a697;
 }
 
 .card.success {
     background-color: #a5a697;
-    color: #000000;
+    color: #4d513c;
     transform: scale(0.95);
 }
