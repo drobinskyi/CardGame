@@ -1,4 +1,4 @@
-class Card {
+export default class Card {
     _open = false
     _success = false
 
@@ -34,9 +34,3 @@ class Card {
         return this._success
     }
 }
-
-// let newCard = new Card(document.getElementById('game'), 4, flip);
-
-// function flip(card) {
-//     console.log(card);
-// }
