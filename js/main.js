@@ -1,10 +1,13 @@
 import Card from './card.js'
 
-let cardsCount = 6;
-let cardsNumberArray = [];
-let cardsArray = [];
-
 function newGame(container, cardsCount) {
+    let cardsNumberArray = [];
+    let cardsArray = [];
+    let firstCard = null;
+    let secondCard = null;
+
+    // Створення ігрового поля
+    
     for (let i = 1; i <= cardsCount / 2; i++) {
         cardsNumberArray.push(i)
         cardsNumberArray.push(i)
@@ -16,10 +19,49 @@ function newGame(container, cardsCount) {
         cardsArray.push(new Card(container, cardNumber, flip))
     }
 
-    function flip() {
-        console.log('flip');
+    // Перевірка карт
+
+    function flip(card) {
+        if (firstCard !== null && secondCard !== null) {
+            if (firstCard.number !== secondCard.number) {
+                firstCard.open = false
+                secondCard.open = false
+                firstCard = null
+                secondCard = null
+            }
+        }
+
+        if (firstCard == null) {
+            firstCard = card
+        } else {
+            if (secondCard == null) {
+                secondCard = card  
+            }
+        }
+
+        if (firstCard !== null && secondCard !== null) {
+            if (firstCard.number === secondCard.number) {
+                firstCard.success = true
+                secondCard.success = true
+                firstCard = null
+                secondCard = null
+            }
+        }
+
+        // Завершення гри
+
+        if (document.querySelectorAll('.card.success').length === cardsNumberArray.length) {
+            alert('You win!');
+
+            container.innerHTML = '';
+            cardsNumberArray = [];
+            cardsArray = [];
+            firstCard = null;
+            secondCard = null;
+
+            newGame(container, cardsCount)
+        }
     }
-    console.log(cardsNumberArray);
 };
 
-newGame(document.getElementById('game'), cardsCount);
+newGame(document.getElementById('game'), 8);

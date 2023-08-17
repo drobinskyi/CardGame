@@ -6,6 +6,7 @@ export default class Card {
         this.card = document.createElement('div');
         this.card.classList.add('card');
         this.card.textContent = number;
+        this.number = number
 
         this.card.addEventListener('click', () => {
         if (this.open == false && this.success == false) {
