@@ -1,25 +1,42 @@
-let card;
-let _open = false,
+class Card {
+    _open = false
     _success = false
 
-function newCard(container, number, action) {
-    card = document.createElement('div');
-    card.classList.add('card');
-    card.textContent = number;
+    constructor(container, number, action) {
+        this.card = document.createElement('div');
+        this.card.classList.add('card');
+        this.card.textContent = number;
 
-    card.addEventListener('click', () => {
-        if (_open == false && _success == false) {
-            card.classList.add('open');
-            _open = true
-            action(card)
+        this.card.addEventListener('click', () => {
+        if (this.open == false && this.success == false) {
+            this.open = true
+            action(this)
         }
     })
-    container.append(card);
+    container.append(this.card);
+    }
 
+    set open(value) {
+        this._open = value
+        value ? this.card.classList.add('open') : this.card.classList.remove('open')
+    }
+
+    get open() {
+        return this._open
+    }
+
+    set success(value) {
+        this._success = value
+        value ? this.card.classList.add('success') : this.card.classList.remove('success')
+    }
+
+    get success() {
+        return this._success
+    }
 }
+
+let newCard = new Card(document.getElementById('game'), 4, flip);
 
 function flip(card) {
     console.log(card);
 }
-
-newCard(document.getElementById('game'), 4, flip);
