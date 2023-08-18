@@ -21,15 +21,65 @@ a {
     text-decoration: none;
 }
 
-h1 {
+.title {
     font-size: 64px;
     color: #312d29;
+    transition: .2s;
+}
+
+.title.dark-mode {
+    color: #f0f0f0;
+}
+
+.button-mode {
+    font-size: 32px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    color: #005075;
+    border: 1px solid #005075;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.button-mode:hover {
+    background-color: #6e8a98;
+}
+
+.button-mode.dark-mode {
+    font-size: 28px;
+    color: #f1c232;
+    border: 1px solid #f1c232;
+    background-color: #312d29;
+}
+
+.button-mode.dark-mode:hover {
+    background-color: #675e41;
+}
+
+.main {
+    height: 100vh;
+    background-color: #f0f0f0;
+    transition: .2s;
+}
+
+.main.dark-mode {
+    background-color: #312d29;
 }
 
 .container {
     max-width: 1200px;
     padding: 15px;
     margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .game {

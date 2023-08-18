@@ -64,4 +64,44 @@ function newGame(container, cardsCount) {
     }
 };
 
+// Зміна теми
+
+const modeBtn = document.querySelector('.button-mode');
+const field = document.querySelector('.main');
+const title = document.querySelector('.title');
+
+const mode = localStorage.getItem("mode");
+if (mode) {
+    modeBtn.classList.add(mode);
+    field.classList.add(mode);
+    title.classList.add(mode);
+}
+
+// Зміна іконки в кнопці
+
+function buttonsIcon() {
+    if (document.querySelector('.dark-mode')) {
+        modeBtn.innerHTML = `<i class="fa-solid fa-sun"></i>`
+    } else {
+        modeBtn.innerHTML =  `<i class="fa-solid fa-moon"></i>`
+    }
+}
+
+modeBtn.addEventListener('click', () => {
+    modeBtn.classList.toggle('dark-mode');
+    field.classList.toggle('dark-mode');
+    title.classList.toggle('dark-mode');
+
+    buttonsIcon();
+
+    const mode = localStorage.getItem('mode');
+    if (mode === 'dark-mode') {
+        localStorage.setItem('mode', '')
+    } else {
+        localStorage.setItem('mode', 'dark-mode')
+    }
+});
+
+buttonsIcon();
+
 newGame(document.getElementById('game'), 8);
