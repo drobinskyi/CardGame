@@ -21,13 +21,13 @@ a {
     text-decoration: none;
 }
 
-.title {
+h1 {
     font-size: 64px;
     color: #312d29;
     transition: .2s;
 }
 
-.title.dark-mode {
+h1.dark-mode {
     color: #f0f0f0;
 }
 
@@ -60,7 +60,8 @@ a {
 }
 
 .main {
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
     background-color: #f0f0f0;
     transition: .2s;
 }
@@ -88,7 +89,7 @@ a {
 }
 
 .card {
-    width: 15%;
+    width: 140px;
     height: 180px;
     margin-right: 10px;
     margin-bottom: 10px;
@@ -112,4 +113,50 @@ a {
     background-color: #a5a697;
     color: #4d513c;
     transform: scale(0.95);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.win-message {
+    font-size: 48px;
+    color: #ea6e21;
+    animation: pulse 2.5s ease-in-out infinite;
+}
+
+.button-new-game {
+    font-size: 28px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    color: #ea6e21;
+    background: none;
+    border: 2px solid #ea6e21;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.button-new-game:hover {
+    background-color: #ea6e215f;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
 }

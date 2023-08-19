@@ -1,5 +1,8 @@
 import Card from './card.js'
 
+const numberOfCards = 12;
+const container = document.getElementById('game');
+
 function newGame(container, cardsCount) {
     let cardsNumberArray = [];
     let cardsArray = [];
@@ -51,24 +54,45 @@ function newGame(container, cardsCount) {
         // Завершення гри
 
         if (document.querySelectorAll('.card.success').length === cardsNumberArray.length) {
-            alert('You win!');
-
-            container.innerHTML = '';
-            cardsNumberArray = [];
-            cardsArray = [];
-            firstCard = null;
-            secondCard = null;
-
-            newGame(container, cardsCount)
+            youWin(cardsNumberArray, cardsArray, firstCard, secondCard);
         }
     }
 };
+
+// Повідомлення "You win!"
+
+function youWin(cardsNumberArray, cardsArray, firstCard, secondCard) {
+    const message = document.querySelector('.you-win');
+    const reload = document.querySelector('.reload');
+    message.innerHTML = `<h2 class="win-message">You win!</h2>`
+
+    reload.innerHTML = `
+        <button class="button-new-game">
+            <i class="fa-solid fa-rotate fa-spin"></i>    
+        </button>
+    `
+
+    // Запуск нової гри
+
+    const newGameBtn = document.querySelector('.button-new-game');
+    newGameBtn.addEventListener('click', () => {
+        container.innerHTML = '';
+        message.innerHTML = '';
+        reload.innerHTML = '';
+        cardsNumberArray = [];
+        cardsArray = [];
+        firstCard = null;
+        secondCard = null;
+
+        newGame(container, numberOfCards);
+    })
+}
 
 // Зміна теми
 
 const modeBtn = document.querySelector('.button-mode');
 const field = document.querySelector('.main');
-const title = document.querySelector('.title');
+const title = document.querySelector('h1');
 
 const mode = localStorage.getItem("mode");
 if (mode) {
@@ -103,5 +127,4 @@ modeBtn.addEventListener('click', () => {
 });
 
 buttonsIcon();
-
-newGame(document.getElementById('game'), 8);
+newGame(container, numberOfCards);
