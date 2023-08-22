@@ -91,8 +91,8 @@ h1.dark-mode {
 .card {
     width: 140px;
     height: 180px;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 12px;
+    margin-bottom: 12px;
     background-color: #4d513c;
     color: transparent;
     font-size: 64px;
@@ -104,9 +104,14 @@ h1.dark-mode {
     transition: background-color .2s, color .2s, transform .2s;
 }
 
+.card:hover {
+    transform: translateY(-4px);
+}
+
 .card.open {
     background-color: #707362;
     color: #a5a697;
+    transform: translateY(-4px);
 }
 
 .card.success {
@@ -148,15 +153,24 @@ h1.dark-mode {
 @keyframes pulse {
     0% {
         transform: scale(0.5);
-        opacity: 0;
+        opacity: .5;
+    }
+
+    25% {
+        opacity: .75;
     }
 
     50% {
+        transform: scale(1.2);
         opacity: 1;
     }
 
+    75% {
+        opacity: .75;
+    }
+
     100% {
-        transform: scale(1.2);
-        opacity: 0;
+        transform: scale(0.5);
+        opacity: .5;
     }
 }
