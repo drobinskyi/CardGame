@@ -24,7 +24,13 @@ a {
 h1 {
     font-size: 64px;
     color: #312d29;
+    cursor: default;
     transition: .2s;
+    transition: transform .5s;
+}
+
+h1:hover {
+    transform:scale(1.2);
 }
 
 h1.dark-mode {
